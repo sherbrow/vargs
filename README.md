@@ -10,18 +10,18 @@ import os
 
 fn main() {
     // Second argument removes the first argument which contains the path of the executable.
-    mut _args := vargs.new(os.args, 1)
+    mut app_args := vargs.new(os.args, 1)
     
     // Use the `alias` method if you want to map an option to an existing option.
-    _args.alias('W', 'with')
+    app_args.alias('W', 'with')
 
     // Parsing is now a separate step
-    _args.parse()
+    app_args.parse()
 
-    println(_args.str())
-    println(_args.command)
-    println(_args.unknown[0])
-    println('with? ' + _args.options['with'])
+    println(app_args.str())
+    println(app_args.command)
+    println(app_args.unknown[0])
+    println('with? ' + app_args.options['with'])
 }
 ```
 
