@@ -51,10 +51,11 @@ pub fn (mut v Args) parse() Args {
 
     for i, curr in args {
         next := if i+1 > args.len-1 { '' } else { args[i+1] }
-        prev := if i-1 <= 0 { '' } else { args[i-1] }
+        prev := if i == 0 { '' } else { args[i-1] }
 
         if i == 0 && !starts_with_hypen(curr) {
             v.command = curr
+            continue
         }
 
         if (starts_with_hypen(prev) && parse_option(prev).len == 1) && !starts_with_hypen(curr) {
@@ -71,7 +72,7 @@ pub fn (mut v Args) parse() Args {
             }
         }
 
-        if i != 0 && (!starts_with_hypen(prev) || parse_option(prev).len == 2) && !starts_with_hypen(curr) {
+        if (!starts_with_hypen(prev) || parse_option(prev).len == 2) && !starts_with_hypen(curr) {
             v.unknown << curr
         }
     }

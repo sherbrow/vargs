@@ -8,6 +8,7 @@ import vargs
 
 const (
     test_arr = ['hello', '-f', 'bar', '--foo', 'baz', '--lol=yey', '-t=test', '123', '-n', '--foo', 'bal']
+    test_arr_wo_command = ['-f', 'bar', '--foo', 'baz', '--lol=yey', '-t=test', '123', '-n', '--foo', 'bal']
 )
 
 fn test_parse() {
@@ -15,6 +16,19 @@ fn test_parse() {
     a.parse()
 
     assert a.command == 'hello'
+    assert a.options['f'] == 'bar'
+    assert a.options['foo'] == 'baz,bal'
+    assert a.options['lol'] == 'yey'
+    assert a.options['t'] == 'test'
+    assert a.options['n'] == ''
+    assert a.unknown[0] == '123'
+}
+
+fn test_parse_wo_command() {
+    mut a := vargs.new(test_arr_wo_command, 0)
+    a.parse()
+
+    assert a.command == ''
     assert a.options['f'] == 'bar'
     assert a.options['foo'] == 'baz,bal'
     assert a.options['lol'] == 'yey'
