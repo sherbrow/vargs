@@ -94,5 +94,5 @@ pub fn (v Args) str() string {
     for i, el in opts { opts[i] = el.trim_space() }
     opts_str := opts.join(' ')
 
-    return '\{ command: "${v.command}", options: ${opts_str}, unknown: ${v.unknown.str()} \}'
+    return "\{command: '${v.command}', options: ${opts_str}, unknown: ${v.unknown.str()}\}"
 }

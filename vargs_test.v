@@ -27,7 +27,7 @@ fn test_str() {
     mut a := vargs.new(test_arr, 0)
     a.parse()
 
-    assert a.str() == '\{ command: "hello", options: { "f" => "bar" "foo" => "baz,bal" "lol" => "yey" "t" => "test" }, unknown: ["123"] \}'
+    assert a.str() == "\{command: 'hello', options: {'f': 'bar', 'foo': 'baz,bal', 'lol': 'yey', 't': 'test'}, unknown: ['123']\}"
 }
 
 fn test_array_option() {
