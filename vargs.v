@@ -11,7 +11,7 @@ pub struct Args {
     orig []string
     start int
 pub mut:
-    command string = ''
+    command string
     options map[string]string = map[string]string
     aliases map[string]string = map[string]string
     unknown []string = []string{}
