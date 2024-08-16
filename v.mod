@@ -1,5 +1,5 @@
 Module {
-   name: 'nedpals.args',
-   version: '0.5',
+   name: 'nedpals.vargs',
+   version: '0.5.1',
    dependencies: []
 }
